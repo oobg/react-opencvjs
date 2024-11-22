@@ -1,33 +1,43 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './assets/css/App.css'
+import "./assets/css/App.css";
+import { useEffect, useRef } from "react";
 
 function App() {
-  const [count, setCount] = useState(0)
+  const canvasRef = useRef<HTMLCanvasElement>(null);
+
+  const imgSrc = "/img/dog1.png";
+
+  useEffect(() => {
+    const canvas = canvasRef.current;
+    if (canvas) {
+      const context = canvas.getContext("2d");
+      if (context) {
+        if (imgSrc) {
+          const backImg = new Image();
+          backImg.src = imgSrc;
+          backImg.onload = () => {
+            context.drawImage(backImg, 0, 0, context.canvas.width, context.canvas.height);
+          }
+        } else {
+          context.fillStyle = "white";
+          context.fillRect(0, 0, context.canvas.width, context.canvas.height);
+        }
+      }
+    }
+  }, []);
 
   return (
     <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+      <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: "1rem" }}>
+        <div style={{ display: "flex", gap: "1rem"}}>
+          <button style={{ borderColor: "lightgray" }}>origin</button>
+          <button style={{ borderColor: "lightgray" }}>grey</button>
+        </div>
+        <canvas
+          ref={canvasRef}
+          width={500}
+          height={500}
+        />
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
     </>
   )
 }
