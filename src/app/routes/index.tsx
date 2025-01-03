@@ -1,37 +1,15 @@
 import { JSX } from "react";
-import {
-	createBrowserRouter,
-	RouterProvider,
-} from "react-router";
-import {
-	LazyLoader,
-	RenderElement,
-	type CustomRouteObject,
-} from "./util";
-import {
-	DefaultLayout
-} from "../../widgets/layout";
+import * as R from "react-router";
+import * as U from "./util";
+import routes from "./routes";
 
-const routes: CustomRouteObject[] = [
-	{
-		path: "/",
-		element: LazyLoader("Home.tsx"),
-		layout: DefaultLayout,
-	},
-	{
-		path: "/img",
-		element: LazyLoader("Img.tsx"),
-		layout: DefaultLayout,
-	},
-];
-
-const router = createBrowserRouter(
-	routes.map((route: CustomRouteObject) => ({
+const router: R.DataRouter = R.createBrowserRouter(
+	routes.map((route: U.CustomRouteObject): R.RouteObject => ({
 		...route,
-		element: RenderElement(route),
+		element: U.RenderElement(route),
 	}))
 );
 
 export default function Routes(): JSX.Element {
-	return <RouterProvider router={router} />;
+	return <R.RouterProvider router={router} />;
 }

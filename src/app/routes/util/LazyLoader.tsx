@@ -13,14 +13,14 @@ type TModules = Record<string, () => Promise<TModule>>;
 function LazyLoader(filePath: string): JSX.Element {
 	const modules: TModules = import.meta.glob<TModule>("/src/pages/**/*.tsx");
 
-	const ComponentPath = modules[`/src/pages/${filePath}`];
+	const DynamicModule = modules[`/src/pages/${filePath}`];
 
-	if (!ComponentPath) {
+	if (!DynamicModule) {
 		throw new Error(`File not found: ${filePath}`);
 	}
 
 	const AsyncComponent: LazyExoticComponent<AnyComponent> = lazy(() =>
-		ComponentPath().then((module: TModule): TModule => ({ default: module.default }))
+		DynamicModule().then((module: TModule): TModule => ({ default: module.default }))
 	);
 
 	return (
