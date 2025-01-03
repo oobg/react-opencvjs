@@ -1,6 +1,6 @@
-import "./assets/css/App.css";
+import "@/app/assets/css/App.css";
 import { StrictMode } from "react";
-import Routes from "./routes";
+import Routes from "@/app/routes";
 
 function App() {
   return (
