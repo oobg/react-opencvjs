@@ -1,9 +1,12 @@
 import "./assets/css/App.css";
+import { StrictMode } from "react";
 import Routes from "./routes";
 
 function App() {
   return (
-    <Routes />
+    <StrictMode>
+      <Routes />
+    </StrictMode>
   )
 }
 
