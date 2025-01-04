@@ -1,7 +1,6 @@
 import {
 	JSX,
 	lazy,
-	Suspense,
 	type LazyExoticComponent,
 } from "react";
 import * as T from "../@types";
@@ -20,9 +19,7 @@ function LazyLoader(filePath: string): JSX.Element {
 	);
 
 	return (
-		<Suspense fallback={<div>Loading...</div>}>
-			<AsyncComponent />
-		</Suspense>
+		<AsyncComponent />
 	);
 }
 

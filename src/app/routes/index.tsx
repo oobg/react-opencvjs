@@ -1,4 +1,4 @@
-import { JSX } from "react";
+import { JSX, Suspense } from "react";
 import * as R from "react-router";
 import * as U from "./util";
 import * as T from "./@types";
@@ -12,5 +12,9 @@ const router: R.DataRouter = R.createBrowserRouter(
 );
 
 export default function Routes(): JSX.Element {
-	return <R.RouterProvider router={router} />;
+	return (
+		<Suspense fallback={<div>Loading...</div>}>
+			<R.RouterProvider router={router} />
+		</Suspense>
+	);
 }
