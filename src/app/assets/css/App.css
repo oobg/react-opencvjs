@@ -28,6 +28,7 @@
     flex-direction: column;
     justify-content: start;
     align-items: center;
+    gap: 1rem;
 
     /* #root 에 자식이 main 하나만 있을 때 (e.g. EmptyLayout) */
     &:is(:first-child):is(:last-child) {

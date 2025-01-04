@@ -63,40 +63,26 @@ export default function Page() {
 	}
 
 	return (
-	  <>
-	    <div
-	      style={{
-	        display: "flex",
-	        flexDirection: "column",
-	        alignItems: "center",
-	        gap: "1rem",
-	      }}
-	    >
-	      <div
-	        style={{
-	          display: "flex",
-	          gap: "1rem",
-	        }}
-	      >
-	        <button
-	          style={{
-	            borderColor: "lightgray"
-	          }}
-	          onClick={convertToOriginal}
-	        >origin</button>
-	        <button
-	          style={{
-	            borderColor: "lightgray"
-	          }}
-	          onClick={convertToGrey}
-	        >grey</button>
-	      </div>
-	      <canvas
-	        ref={canvasRef}
-	        width={500}
-	        height={500}
-	      />
-	    </div>
-	  </>
+		<>
+			<div
+				style={{ display: "flex", gap: "1rem", }}
+			>
+				<button
+					style={{ borderColor: "lightgray" }}
+					onClick={convertToOriginal}
+				>origin
+				</button>
+				<button
+					style={{ borderColor: "lightgray" }}
+					onClick={convertToGrey}
+				>grey
+				</button>
+			</div>
+			<canvas
+				ref={canvasRef}
+				width={500}
+				height={500}
+			/>
+		</>
 	)
 }
