@@ -2,16 +2,12 @@ import {
 	JSX,
 	lazy,
 	Suspense,
-	type ComponentType,
 	type LazyExoticComponent,
 } from "react";
-
-type AnyComponent = ComponentType<unknown>;
-type TModule = { default: AnyComponent };
-type TModules = Record<string, () => Promise<TModule>>;
+import * as T from "../@types";
 
 function LazyLoader(filePath: string): JSX.Element {
-	const modules: TModules = import.meta.glob<TModule>("/src/pages/**/*.tsx");
+	const modules: T.Modules = import.meta.glob<T.Module>("/src/pages/**/*.tsx");
 
 	const DynamicModule = modules[`/src/pages/${filePath}`];
 
@@ -19,8 +15,8 @@ function LazyLoader(filePath: string): JSX.Element {
 		throw new Error(`File not found: ${filePath}`);
 	}
 
-	const AsyncComponent: LazyExoticComponent<AnyComponent> = lazy(() =>
-		DynamicModule().then((module: TModule): TModule => ({ default: module.default }))
+	const AsyncComponent: LazyExoticComponent<T.AnyComponent> = lazy(() =>
+		DynamicModule().then((module: T.Module): T.Module => ({ default: module.default }))
 	);
 
 	return (

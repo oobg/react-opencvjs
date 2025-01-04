@@ -1,14 +1,15 @@
 import * as U from "./util";
-import * as L from "../../widgets/layout";
+import * as T from "./@types";
+import * as L from "@/widgets/layout";
 
-const routes: U.CustomRouteObject[] = [
+const routes: T.CustomRouteObject[] = [
 	{
 		path: "/",
 		element: U.LazyLoader("Home.tsx"),
 		layout: L.DefaultLayout,
 	},
 	{
-		path: "/img",
+		path: "/color-scale",
 		element: U.LazyLoader("Img.tsx"),
 		layout: L.DefaultLayout,
 	},
