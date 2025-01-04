@@ -1,11 +1,12 @@
 import { JSX } from "react";
 import * as T from "../@types";
+import * as L from "@/widgets/layout";
 
 function RenderElement(route: T.CustomRouteObject): JSX.Element {
 	return (
 		route.layout
 			? ( <route.layout>{route.element}</route.layout> )
-			: ( route.element )
+			: ( <L.DefaultLayout>{route.element}</L.DefaultLayout> )
 	) as JSX.Element;
 }
 
