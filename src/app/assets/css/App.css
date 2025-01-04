@@ -1,6 +1,12 @@
 * {
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
+  overflow-x: hidden;
+}
+
+body {
+  overflow-y: auto;
 }
 
 #root {
@@ -11,9 +17,6 @@
 
   width: 100dvw;
   min-height: 100dvh;
-
-  overflow-x: hidden;
-  overflow-y: auto;
 
   > header,
   > footer {
@@ -33,6 +36,13 @@
     /* #root 에 자식이 main 하나만 있을 때 (e.g. EmptyLayout) */
     &:is(:first-child):is(:last-child) {
       justify-content: center;
+    }
+
+    /* #root 에 main 과 footer 가 있을 때 (e.g. FooterLayout) */
+    &:is(:first-child):not(:last-child) {
+      justify-content: center;
+      height: 100dvh;
+      flex: auto;
     }
   }
 }
