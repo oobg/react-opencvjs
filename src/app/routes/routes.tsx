@@ -23,6 +23,16 @@ const routes: T.CustomRouteObject[] = [
 		element: U.LazyLoader("WaterMark.tsx"),
 		layout: L.DefaultLayout,
 	},
+	{
+		path: "/ww/watermark/canvas",
+		element: U.LazyLoader("web-worker/WaterMarkCanvas.tsx"),
+		layout: L.DefaultLayout,
+	},
+	{
+		path: "/ww/watermark/img",
+		element: U.LazyLoader("web-worker/WaterMarkImg.tsx"),
+		layout: L.DefaultLayout,
+	},
 ];
 
 export default routes;
