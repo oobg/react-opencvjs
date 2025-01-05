@@ -11,7 +11,7 @@ function LazyLoader(filePath: string): JSX.Element {
 	const DynamicModule = modules[`/src/pages/${filePath}`];
 
 	if (!DynamicModule) {
-		throw new Error(`File not found: ${filePath}`);
+		throw new Error(`File not found: /src/pages/${filePath}`);
 	}
 
 	const AsyncComponent: LazyExoticComponent<T.AnyComponent> = lazy(() =>
