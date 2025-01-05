@@ -60,7 +60,7 @@ self.onmessage = async (event) => {
 		context.restore();
 	}
 
-	// OffscreenCanvas의 결과 반환
-	const bitmap = offscreenCanvas.transferToImageBitmap();
-	(self as DedicatedWorkerGlobalScope).postMessage({ bitmap }, [bitmap]);
+	// Blob으로 변환 후 반환
+	const blob = await offscreenCanvas.convertToBlob();
+	(self as DedicatedWorkerGlobalScope).postMessage({ blob });
 };

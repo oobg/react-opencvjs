@@ -25,13 +25,15 @@ export default function Page(): JSX.Element {
 				gap: 20, // 워터마크 간 간격
 			});
 
-			worker.onmessage = (event) => {
-				const { bitmap } = event.data;
+			worker.onmessage = async (event) => {
+				const { blob } = event.data;
 
 				// Web Worker에서 전달받은 ImageBitmap을 캔버스에 그리기
 				const context = canvas.getContext("2d");
 				if (context) {
-					context.clearRect(0, 0, width, height);
+					// Blob -> ImageBitmap 변환
+					const bitmap = await createImageBitmap(blob);
+					// context.clearRect(0, 0, width, height);
 					context.drawImage(bitmap, 0, 0);
 				}
 			};
