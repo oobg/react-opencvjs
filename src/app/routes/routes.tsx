@@ -33,6 +33,11 @@ const routes: T.CustomRouteObject[] = [
 		element: U.LazyLoader("web-worker/WaterMarkImg.tsx"),
 		layout: L.DefaultLayout,
 	},
+	{
+		path: "/ww/watermark/img-delay",
+		element: U.LazyLoader("web-worker/WaterMarkImgDelay.tsx"),
+		layout: L.DefaultLayout,
+	},
 ];
 
 export default routes;
