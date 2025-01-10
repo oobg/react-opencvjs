@@ -84,7 +84,8 @@ const makePattern = (
 	const extendedWidth: number = diagonal;
 	const extendedHeight: number = diagonal;
 
-	context.globalAlpha = 0.2;
+	// context.globalAlpha = 0.2;
+	context.globalAlpha = 0.5;
 	context.fillStyle = pattern;
 	context.fillRect(
 		(width - extendedWidth) / 2,
