@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-export default function useImageWorkerQueue(BATCH_SIZE: number) {
+export default function useImageQueue(BATCH_SIZE: number) {
 	const [taskQueue, setTaskQueue] = useState<any[]>([]);
 	const [imageQueue, setImageQueue] = useState<string[]>([]);
 	const [isProcessing, setIsProcessing] = useState<boolean>(false);

@@ -1,1 +1,1 @@
-export { default as useImageWorkerQueue } from "./useImageWorkerQueue";
+export { default as useImageWorkerQueue } from "./useImageQueue.ts";
