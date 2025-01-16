@@ -1,1 +1,1 @@
-export { default } from "./RenderImage.tsx";
+export { default as RenderImage } from "./RenderImage.tsx";

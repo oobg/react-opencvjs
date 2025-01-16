@@ -1,24 +1,27 @@
 import { useEffect } from "react";
 import useImageQueue from "@/features/water-mark/lib/useImageQueue.ts";
 
-// 예시 로직
-const props = Array.from({ length: 30 }, (_, i) => ({
-	id: i + 1,
-	width: 500,
-	height: 500,
-	imgSrc: `/img/dog1.png`,
-	patternSrc: `/img/Flamel.webp`,
-	maxHeight: 20,
-	gap: 20,
-}));
+interface RenderImageProps {
+	id: number;
+	width: number;
+	height: number;
+	imgSrc: string;
+	patternSrc: string;
+	maxHeight: number;
+	gap: number;
+}
 
-export default function RenderImage() {
-	const BATCH_SIZE = 5;
+interface RenderImageComponentProps {
+	props: RenderImageProps[];
+}
+
+export default function RenderImage({ props }: RenderImageComponentProps): JSX.Element {
+	const BATCH_SIZE = 10;
 	const { setTaskQueue, imageQueue } = useImageQueue(BATCH_SIZE);
 
 	useEffect(() => {
 		setTaskQueue(props);
-	}, [setTaskQueue]);
+	}, [setTaskQueue, props]);
 
 	return (
 		<>
