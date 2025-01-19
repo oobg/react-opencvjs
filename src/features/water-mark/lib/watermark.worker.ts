@@ -17,7 +17,7 @@ self.onmessage = async (event: MessageEvent<IMessageEventData>): Promise<void> =
 	context.drawImage(mainImg, 0, 0, width, height);
 
 	// 패턴 이미지 로드 및 생성
-	const patternImg: ImageBitmap = await srcToImgBitmap(patternSrc);
+	const patternImg: ImageBitmap = patternSrc;
 	const { patternWidth, patternHeight } = getPatternConfig(patternImg.width, patternImg.height, maxHeight);
 
 	const patternCanvas: OffscreenCanvas = new OffscreenCanvas(patternWidth + gap, patternHeight + gap);

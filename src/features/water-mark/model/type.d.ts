@@ -2,7 +2,7 @@ export interface IMessageEventData {
 	width: number,
 	height: number,
 	imgSrc: string,
-	patternSrc: string,
+	patternSrc: ImageBitmap,
 	maxHeight: number,
 	gap: number,
 }
